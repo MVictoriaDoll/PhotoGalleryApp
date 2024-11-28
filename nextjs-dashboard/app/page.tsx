@@ -53,6 +53,7 @@ export default async function Page() {
 
     data.forEach((result, index) => {
       const theme = THEMES[index];
+      const validPhotos = result.photos.filter((photo: any) => photo.id && photo.src?.medium);
       const photos = result.photos.map((photo: any) => ({
         id: photo.id,
         theme, 
@@ -85,15 +86,19 @@ export default async function Page() {
   const albums: Album[] = Object.values(groupedByTheme);
 
   return (
-    <main>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "16px" }}>
+    <main className='album-container'>
+      <div className='album-grid'>
         {albums.map((album) => (
+          <Link key={album.id} href={`/id/${album.id}`}>
+    
           <AlbumCard
             key={album.id}
             title={album.name}
             description={`Fotos relacionadas con ${album.name}`}
             imageUrl={album.cover}
           />
+      
+          </Link>
         ))}
       </div>
     </main>

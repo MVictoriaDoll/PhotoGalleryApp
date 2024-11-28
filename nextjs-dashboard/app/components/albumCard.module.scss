@@ -1,9 +1,13 @@
+
 .albumCard {
-    border: 1px solid #ddd;
+    width: 100%;
+    height: auto;
+    border: none; 
     border-radius: 8px;
     padding: 16px;
     text-align: center;
     transition: transform 0.2s ease;
+    
   
     &:hover {
       transform: scale(1.05);
