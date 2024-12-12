@@ -1,6 +1,5 @@
-
 import Link from 'next/link';
-
+import React from "react";
 
 type Album = {
   id: string;
@@ -8,25 +7,23 @@ type Album = {
 };
 
 type NavLinksProps = {
-
   albums: Album[];
-
-}
- 
+};
 
 export default function NavLinks({ albums }: NavLinksProps) { 
   return (
     <>
       {albums.map((album) => {
-        return ( 
-      <Link
-      key={album.id}
-      href={`/id/${album.id}`}
-      className='photos'
-      >
-      {album.name}
-      </Link>
-     )
+        console.log('Albums:', albums); // Ahora este console.log se ejecutará correctamente
+        return (
+          <Link
+            key={album.id}
+            href={`/album/${album.id}`}
+            className='photos' 
+          >
+            {album.name}
+          </Link>
+        );
       })}
     </>
   );

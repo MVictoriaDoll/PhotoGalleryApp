@@ -1,7 +1,9 @@
 
+
 import { PhotoIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import AlbumCard from './components/albumCard';
+import NavLinks from './components/nav-links';
 
 type Photo = {
   id: string;
@@ -89,10 +91,10 @@ export default async function Page() {
     <main className='album-container'>
       <div className='album-grid'>
         {albums.map((album) => (
-          <Link key={album.id} href={`/id/${album.id}`}>
+          <Link key={album.id} href={`/album/${album.id}`}>
     
           <AlbumCard
-            key={album.id}
+            id={album.id}
             title={album.name}
             description={`Fotos relacionadas con ${album.name}`}
             imageUrl={album.cover}
